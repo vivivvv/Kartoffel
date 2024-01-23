@@ -1,6 +1,7 @@
 package com.app.mybase
 
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.app.mybase.base.BaseViewModel
 import com.app.mybase.helper.ApisResponse
@@ -11,14 +12,23 @@ class MainViewModel @Inject constructor(
     private val mainRepository: MainRepository
 ) : BaseViewModel() {
 
+    var showAddBtn = MutableLiveData<Boolean>()
 
-    fun getName(): String {
-        return mainRepository.getName()
+    init {
+        hideAddBtn()
     }
 
-    fun getNotificationCount() = liveData(Dispatchers.IO) {
+    fun showAddBtn() {
+        showAddBtn.value = true
+    }
+
+    fun hideAddBtn() {
+        showAddBtn.value = false
+    }
+
+    fun getResponseData(catId: String) = liveData(Dispatchers.IO) {
         emit(ApisResponse.Loading)
-        emit(mainRepository.getNotificationCount())
+        emit(mainRepository.getResponseData(catId))
         emit(ApisResponse.Complete)
     }
 

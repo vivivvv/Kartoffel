@@ -1,5 +1,6 @@
 package com.app.mybase.di.modules
 
+import com.app.mybase.BuildConfig
 import com.app.mybase.network.ApiStories
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -49,7 +50,7 @@ class ApiModule {
     @Provides
     fun getRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gson))
-            .baseUrl("https://www.epm-dev.demo-bpmlinks.com/").client(okHttpClient).build()
+            .baseUrl(BuildConfig.base_url).client(okHttpClient).build()
     }
 
     @Singleton

@@ -1,15 +1,12 @@
 package com.app.mybase.network
 
-import com.app.mybase.model.UserDetailsResponse
-import retrofit2.Response
+import com.app.mybase.model.ApiResponseData
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiStories {
 
-    @GET("no-auth/api/authentication/user-info")
-    suspend fun getNotificationCount(@Query("loginName") loginName: String): UserDetailsResponse
+    @GET("get_Particular_Category_Products")
+    suspend fun getResponseData(@Query("cat_id") catId: String): ApiResponseData
 
-//    @GET("getAllUsers/{topic}")
-//    suspend fun getAllUsers(@Path("topic") String topic): List<User>
 }

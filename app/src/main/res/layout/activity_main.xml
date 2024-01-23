@@ -12,21 +12,41 @@
             type="com.app.mybase.MainViewModel" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/text_view"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/poppins_medium"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/add"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibility="@{mainViewModel.showAddBtn.booleanValue ? View.VISIBLE : View.GONE}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cat_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/add_btn"
+            tools:itemCount="5"
+            tools:listitem="@layout/rv_cat_card" />
 
         <include
             layout="@layout/progressbar"
